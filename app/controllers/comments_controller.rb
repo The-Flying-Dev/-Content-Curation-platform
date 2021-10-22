@@ -18,5 +18,5 @@ class CommentsController < ApplicationController
             render json: {message: "Error creating a comment"}
         end
     end
-    
+
 end

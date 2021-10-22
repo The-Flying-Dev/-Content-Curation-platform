@@ -1,6 +1,6 @@
 class ContentsController < ApplicationController
     def index
-        contents = content.all
+        contents = Content.all
         render json: contents, include: [:user]
     end
 
@@ -13,7 +13,7 @@ class ContentsController < ApplicationController
                 image: content.image,
                 description: content.description,
                 user: content.user,
-                comment: content.comment
+                comment: content.comments
             }
 
         else 
@@ -27,6 +27,7 @@ class ContentsController < ApplicationController
         content.url = params[:url]
         content.description = params[:description]
         content.image = params[:image]
+        content.user_id = 1
         content.save
         if Content.save 
             render json: content
